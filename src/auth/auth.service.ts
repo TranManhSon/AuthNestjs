@@ -23,32 +23,10 @@ export class AuthService {
     return null;
   }
 
-  async login(user: any) {
+  async login(user: any): Promise<any> {
     const payload = { username: user.email, sub: user.userId };
     return {
       access_token: this.jwtService.sign(payload),
     };
   }
 }
-
-
-
-
-    
-//       async login(userData: any) {
-
-//         const payload = { username: userData.username, sub: userData.id };
-//         // const payload = { email: userData.email, password: userData.password};
-//         // const user = await this.usersService.findOneByEmail(payload.email);
-//         // if (!user) {
-//         //   throw new HttpException("This email already exists.", 400, { cause: new Error("Email")});
-//         // }
-//         // const isMatch = await bcrypt.compare(payload.password, user.password);
-//         // if(isMatch) {
-//         //   throw new HttpException("Password is incorrect.", 400, { cause: new Error("Password")});
-//         // }
-//         return {
-//           access_token: this.jwtService.sign(payload),
-//         };
-//       }
-// }

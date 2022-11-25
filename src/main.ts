@@ -1,24 +1,15 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import * as session from 'express-session'
-import * as passport from 'passport'
-import secretSession from './config/secretSession.config'
-import secretSessionConfig from './config/secretSession.config';
+import * as cookieParser from 'cookie-parser';
+
 
 async function bootstrap() {
   const appOptions = {cors: true};
   const app = await NestFactory.create(AppModule, appOptions);
   app.setGlobalPrefix('api');
 
-  app.use(
-    session({
-      secret: secretSessionConfig().secretSession,
-      resave: false,
-      saveUninitialized: false,
-      cookie: {maxAge: 3600000 },
-    }),
-  )
+  app.use(cookieParser());
 
   const options = new DocumentBuilder()
     .setTitle('NestJS Realworld Example App')

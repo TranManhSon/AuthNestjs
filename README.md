@@ -48,6 +48,19 @@ $ npm run start:prod
 In the file app.module.ts change env
 ```
 
+## Test API
+
+```bash
+# api register
+http://localhost:3001/api/users/register
+
+# api login
+http://localhost:3001/api/auth/login
+
+# api logout
+http://localhost:3001/api/users/logout
+
+```
 ## Test
 
 ```bash
