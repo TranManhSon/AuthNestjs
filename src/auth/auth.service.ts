@@ -1,3 +1,4 @@
+import { HttpException } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../user/users.service';
 import { JwtService } from '@nestjs/jwt';
@@ -18,9 +19,15 @@ export class AuthService {
         if (isMatch) {
           const { password, ...result } = user;
           return result;
+        } else {
+          throw new HttpException("Password is incorrect.", 400, { cause: new Error("Password")});
         }
+    } else {
+      throw new HttpException("This email already exists.", 400, { cause: new Error("Email")});
     }
-    return null;
+    return {
+      message: "Please check information"
+    };
   }
 
   async login(user: any): Promise<any> {
