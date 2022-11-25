@@ -43,6 +43,9 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+
+# change your database
+In the file app.module.ts change env
 ```
 
 ## Test
