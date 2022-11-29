@@ -14,14 +14,4 @@ export class UsersController {
         return this.usersService.createNewUser(userData);
     }
 
-    // @UseGuards(JwtAuthGuard)
-    // @Post('/logout')
-    @Get("/logout") 
-    public async logout(@Req() req ,@Res({passthrough:true}) res): Promise<any> {
-        // res.clearCookie();
-        res.cookie('auth-cookie', "" , { httpOnly: true });
-        return {
-            message: "logout"
-        }
-    }
 }
