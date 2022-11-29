@@ -25,9 +25,6 @@ export class AuthService {
     } else {
       throw new HttpException("This email already exists.", 400, { cause: new Error("Email")});
     }
-    return {
-      message: "Please check information"
-    };
   }
 
   async login(user: any): Promise<any> {
@@ -37,7 +34,8 @@ export class AuthService {
     };
   }
 
-  async logout(): Promise<any> {
-    return null;
+  async logout(user: any): Promise<any> {
+    user = null;
+    return user;
   }
 }

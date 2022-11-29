@@ -16,8 +16,8 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuard)
   @Post('auth/logout')
-  public async logout(@Res({passthrough:true}) res): Promise<any> {
-    this.authService.login(res);
+  public async logout( @Request() req, @Res({passthrough:true}) res): Promise<any> {
+    this.authService.logout(req.user);
     return {
           message: "logout"
         }
